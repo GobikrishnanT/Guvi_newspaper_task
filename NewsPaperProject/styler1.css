@@ -58,8 +58,28 @@ body{
     z-index: 1;
 }
 .starter_cls{
+    clip-path: polygon(0 1%, 81% 0, 100% 100%, 0% 100%);
     background-color: red;
+    width: 30%;
+    height: 5vh;
 }
 .card-header{
     background-color: silver !important;
+}
+
+.pageShifter{
+    text-decoration-line:none ;
+    color: white;
+    font-style: italic;
+    font-weight: bolder;
+    position: relative;
+    left: 75vh;
+    top: 5vh;
+    margin: 10px;
+    padding: 20px;
+    background:linear-gradient(45deg , rgb(250, 1, 250) , rgb(241, 183, 239));
+    width: 40%;
+    height: 5vh;
+    border-radius: 10px;
+
 }

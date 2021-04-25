@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    
+        <title></title>
+        <style>
+            body{
+                background-color: #EED426;
+            }
+            h1{
+                color: #006666;
+                font-family:Verdana, Geneva, Tahoma, sans-serif;
+                text-align: center;
+            }
+            #rentCostTable_Id{
+                display: none;
+            }
+            
+            
+            
+        </style>
+        
+    </head>
+    <body>
+        
+        <h1>ACTB Connection Portal</h1>
+        <form id="" action="#">
+            
+        
+                <label for="custname_id">Customer Name</label>
+                <input type="text" name="custname" id="custname_id" placeholder="Enter the customer name"/>
+                
+                <label for="custemail_id">Customer Email</label>
+                <input type="email" name="email" id="custemail_id" value="" placeholder="abc@gmail.com" />
+                
+                <label for="cutMobile_Id">Mobile Number</label>
+                <input type="tel" name="mobile" id="cutMobile_Id" value="" maxlength="10"  pattern="[7-9]{1}[0-9]{9}" />
+                
+                <label for="custConnection_Id">Type of Broadband</label>
+                <select id="custConnection_Id">
+                    <option value="Pre">Pre</option>
+                    <option value="Post">Post</option>
+                </select>
+                
+                <Label for="Scheme Name"></Label>
+                <input type="radio" name="scheme1" id="radioButton_Id">
+                <!-- <Label for="radioButton1_Id">Local</Label> -->
+                <input type="radio" name="scheme2" id="radioButton_Id">
+                <!-- <Label for="radioButton1_Id">STD</Label> -->
+                <input type="radio" name="scheme3" id="radioButton_Id">
+                
+              
+                
+                <label for="custDuration_id">Customer Duration</label>
+                <input type="number" name="duration" id="custDuration_id" min="1" max="12"/>
+                
+                <button type="submit" name="submit" onclick="calculateBill()">Calculate Bill Amount</button>
+                <button type="reset" name="clear">Reset</button>
+                
+        </form>
+        
+        <div id="result">
+            
+        </div>
+        <table id="rentCostTable_Id" border="1">
+            <caption>Rental Cost Table</caption>
+            <tr>
+                <th>Connection Type</th>
+                <th>Call Limit</th>
+                <th>Monthly Rental</th>
+            </tr>
+            
+            <tr>
+                <td>Pre</td>
+                <td>500</td>
+                <td>75</td>
+            </tr>
+            
+            <tr>
+                <td>Post</td>
+                <td>Unlimited</td>
+                <td>150</td>
+            </tr>
+        </table>
+        
+        <script type="text/javascript" charset="utf-8">
+            function calculateBill(){
+                let table = document.querySelector('table');
+                table.style.display = "block";
+                let Broadband = document.querySelector('#custConnection_Id');
+                let scheme = document.querySelectorAll('#radioButton_Id');
+                let userScheme = "";
+                let duration = document.querySelector('#custDuration_id').value;
+                
+                for(let i = 0 ; i < scheme.length ; i++) {
+                    if(scheme[i].checked === true) {
+                        userScheme = scheme[i].name;
+                    }
+                }
+                let result = document.querySelector('#result');
+                let bill = 0;
+                switch(userScheme) {
+                    case "scheme1" : 
+                        bill+= (200 * duration);
+                        break;
+                    case "scheme2" :
+                        bill+=(350 * duration);
+                        break;
+                    case "scheme3" :
+                        bill+=(500 * duration);
+                        break;
+                }
+
+                console.log(bill);
+                if(Broadband.value === "Pre") {
+                    bill+=75;
+                }
+                else{
+                    bill+=150;
+                }
+
+                result.textContent = `Total Monthly Rental Cost is Rs.${bill}`
+            }
+            
+            
+        </script>
+        
+    </body>
+</html>

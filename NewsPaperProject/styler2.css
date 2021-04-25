@@ -24,13 +24,15 @@ body{
     bottom: 28vh;
     right: 109vh;
     font-weight: 500;
+    clip-path: polygon(0 1%, 81% 0, 100% 100%, 0% 100%);
 }
 .normalRectangle{
     background-color: silver;
 }
 .specialBox2{
+    clip-path: polygon(0 1%, 81% 0, 100% 100%, 0% 100%);
     background-color: red;
-    width: 18%;
+    width: 30%;
     text-align: center;
     color: white;
     border-bottom-right-radius: 4px;
